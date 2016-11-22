@@ -18,76 +18,76 @@ var state = {
   items: [
     {
       q: "Where is the edge of the universe?",
-      a0: "Yes",
-      a1: "No",
-      a2: "Space doesn't exist",
-      a3: "That is silly"
+      a0: "Under the sea",
+      a1: "Space spreads out infinitely in all directions",
+      a2: "At the edge of the Solar system",
+      a3: "What is universe?"
     },
     {
       q: "What keeps space empty?",
-      a0: "Yes",
-      a1: "No",
-      a2: "They can breath only for 5 minutes",
-      a3: "They can breath only in certain places in space"
+      a0: "Cosmic rays",
+      a1: "Dark energy",
+      a2: "Space is not empty",
+      a3: "The Higgs field"
     },
     {
       q: "What is the range of weapons if used in space?",
-      a0: "Solar Galaxy",
-      a1: "Milky Way",
-      a2: "There are no galaxies in space",
-      a3: "It is all a dream"
+      a0: "Infinite range",
+      a1: "Energy multiplied by wheight and Mayer's ratio",
+      a2: "0",
+      a3: "Weapons are banned in space"
     },
     {
       q: "What is the color of the sun?",
-      a0: "Yes",
-      a1: "No",
-      a2: "They have equal size",
-      a3: "There is no such planet"
+      a0: "Blue",
+      a1: "Yellow",
+      a2: "White",
+      a3: "Sun has no color"
     },
     {
       q: "How often does the sun's magnetic field flip?",
-      a0: "Yes",
-      a1: "No",
-      a2: "They have equal size",
-      a3: "There is no such planet"
+      a0: "Never",
+      a1: "Every 11 years",
+      a2: "Randomly",
+      a3: "Once in a light year"
     },
     {
       q: "How long can a human in outer space last without a spacesuit before exploding?",
-      a0: "Yes",
-      a1: "No",
-      a2: "Space doesn't exist",
-      a3: "That is silly"
+      a0: "Humans don't explode in space",
+      a1: "In about 9-12 seconds",
+      a2: "Instantly",
+      a3: "They get getting crashed by high preassure instead"
     },
     {
       q: "How does a supernova completely destroy a star?",
-      a0: "Yes",
-      a1: "No",
-      a2: "They can breath only for 5 minutes",
-      a3: "They can breath only in certain places in space"
+      a0: "Just like a regular bomb",
+      a1: "By creating a black hole",
+      a2: "What is supernova?",
+      a3: "When star explodes in supernova, it's core survives"
     },
     {
       q: "How does a black hole give off light?",
-      a0: "Solar Galaxy",
-      a1: "Milky Way",
-      a2: "There are no galaxies in space",
-      a3: "It is all a dream"
+      a0: "Black hole doesn't give off any light",
+      a1: "It is reflecting the light of the closest stars",
+      a2: "By emitting radiation",
+      a3: "It's a mystery"
     },
     {
       q: "How do space ships make artificial gravity?",
-      a0: "Yes",
-      a1: "No",
-      a2: "They have equal size",
-      a3: "There is no such planet"
+      a0: "It is impossible",
+      a1: "Through acceleration by rotating about its axis",
+      a2: "It all depends on the size of the ship",
+      a3: "By accumulating dark matter"
     },
     {
-      q: "How do space ships fly faster than light?",
-      a0: "Yes",
-      a1: "No",
-      a2: "They have equal size",
-      a3: "There is no such planet"
+      q: "Which space movie has the most accurate physics?",
+      a0: "Star Wars",
+      a1: "Star Trek",
+      a2: "Armageddon",
+      a3: "2001: A Space Odyssey"
     }
   ],
-  answers: ['0', '1', '2', '3', '0', '1', '2', '3', '0', '2'],
+  answers: ['1', '2', '0', '2', '1', '0', '3', '0', '1', '3'],
   progress: {
     now: 0
   },
@@ -108,11 +108,13 @@ function getUserAns(target) {
 };
 
 function countScore() {
+  var score = 0;
   for(i = 0; i < state.items.length; i++){
     if(state.userAns[i] == state.answers[i]){
-      state.userScore++;
+      score++;
     };
   };
+  state.userScore = score;
 };
 
 function checkProgress() {
@@ -170,7 +172,7 @@ function hideError(){
 
 function showResults() {
   $("#results").removeClass("hidden");
-  $("#questionCard, #submit, #progress").addClass("hidden");
+  $("#questionCard, #submit, #progress, #hidden").addClass("hidden");
   createAnsHTML();
   $("#correctAns").append(state.ansHTML);
 };
@@ -188,23 +190,21 @@ function updateProgress() {
 
 //EVENT LISTENERS
 $(document).ready(function() {
-
   var $parent = $("#wrapper");
 
   $parent.on('click', '#start', function(event) {
-    var target1 = "#questionCard, #submit, #progress";
+    var target1 = "#questionCard, #submit, #progress, #line";
     var target2 = "#start";
     start(target1, target2);
     updateProgress();
   });
 
   $parent.on('click', '#submit', function(event) {
-
     if(checkProgress()) {
+      getUserAns('input:checked');
       showResults();
       countScore();
       insertScore();
-
     } else {
       if(proceedCheck()){
         var target = "#question";
@@ -217,10 +217,5 @@ $(document).ready(function() {
         showError();
       };
     };
-
   });
-
-  // $parent.on('change', 'input[type=radio]', function(event){
-  //   getUserAns('input');
-  // });
 });

@@ -1,3 +1,14 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+</html>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,105 +19,50 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,700&amp;subset=cyrillic" rel="stylesheet">
 </head>
 <body>
-  <div class="wrapper" id="wrapper">
-
-    <div class="start" id="start">
-      <button type="button" name="start" class="startButton">Start</button>
-    </div>
-
-    <div class="questionCard hidden" id="questionCard">
-      <div class="question" id="question">
-        Question Text: Hello World this is my question
-      </div>
-
+  <div class="wrapperMain clearfix">
+    <div class="wrapper" id="wrapper">
       <div class="error eHide" id="error">Please select your answer first</div>
-
-      <div class="answerList" id="q1">
-        <ul class="answers" id="q1">
-          <li class="answBox">
-
-            <input type="radio" name="answers" value="0" id="a0">
-            <label for="a0" id="aText0">Answer</label>
-
-          </li>
-
-          <li class="answBox">
-
-            <input type="radio" name="answers" value="1" id="a1">
-            <label for="a1" id="aText1">Answer</label>
-
-          </li>
-
-          <li class="answBox">
-
-            <input type="radio" name="answers" value="2" id="a2">
-            <label for="a2" id="aText2">Answer</label>
-
-          </li>
-
-          <li class="answBox">
-
-            <input type="radio" name="answers" value="3" id="a3">
-            <label for="a3" id="aText3">Answer</label>
-
-          </li>
-
-
-
-
-            <!--
-            <label for="answers" id="a0">
-              <input type="radio" name="answers" value="0" class="answInp"/>
-              Answer
-            </label>
-          </li>
-
-          <li class="answBox">
-
-            <label for="answers" id="a1">
-              <input type="radio" name="answers" value="1" class="answInp"/>
-              Answer
-            </label>
-          </li>
-
-          <li class="answBox">
-            <label for="answers" id="a2">
-              <input type="radio" name="answers" value="2" class="answInp"/>
-              Answer
-            </label>
-          </li>
-
-          <li class="answBox">
-            <label for="answers" id="a3">
-              <input type="radio" name="answers" value="3" class="answInp"/>
-              Answer
-            </label>
-          </li> -->
-        </ul>
+      <div class="start" id="start">
+        <button type="button" name="start" class="startButton">Start Quiz</button>
+      </div>
+      <div class="questionCard hidden" id="questionCard">
+        <div class="question" id="question">
+          Question Text: Hello World this is my question
+        </div>
+        <div class="line hidden" id="line"></div>
+        <div class="answerList" id="q1">
+          <ul class="answers" id="q1">
+            <li class="answBox" id="answBox">
+              <input type="radio" name="answers" value="0" id="a0">
+              <label for="a0" class="ansVal" id="aText0">Answer</label>
+            </li>
+            <li class="answBox" id="answBox">
+              <input type="radio" name="answers" value="1" id="a1">
+              <label for="a1" class="ansVal" id="aText1">Answer</label>
+            </li>
+            <li class="answBox" id="answBox">
+              <input type="radio" name="answers" value="2" id="a2">
+              <label for="a2" class="ansVal" id="aText2">Answer</label>
+            </li>
+            <li class="answBox" id="answBox">
+              <input type="radio" name="answers" value="3" id="a3">
+              <label for="a3" class="ansVal" id="aText3">Answer</label>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="submit hidden" id="submit">
+        <button type="button" name="submit" class="submitButton">Submit</button>
+      </div>
+      <div class="progress hidden" id="progress">1 out of 10</div>
+      <div class="results hidden" id="results">
+        <div class="score" id="score"></div>
+        <h3 class="ansHead">Answers:</h3>
+        <div class="correctAns" id="correctAns"></div>
       </div>
     </div>
-
-
-    <div class="submit hidden" id="submit">
-      <button type="button" name="submit" class="submitButton">Submit</button>
-    </div>
-
-    <div class="progress hidden" id="progress">1 out of 10</div>
-
-    <div class="results hidden" id="results">
-
-      <h2 class="rHead">Your score:</h2>
-      <div class="score" id="score"></div>
-      <h3 class="ansHead">Answers:</h3>
-      <div class="correctAns" id="correctAns"></div>
-
-    </div>
-
+    <div class="side"></div>
   </div>
-
-  <div class="side"></div>
-
-
   <script src="jquery.js"></script>
   <script src="app.js"></script>
 </body>

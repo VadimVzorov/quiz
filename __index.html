@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+
+    <!--
+
+    . vh
+    . y clearing float
+    . ways to clear float. clearfix
+
+
+  -->
+
+
+    <style>
+    *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    .main-wrapper{
+
+    }
+
+    .quiz-wrapper{
+      float: left;
+      width: 50%;
+    }
+
+    .image-wrapper{
+      float: left;
+  width: 50%;
+  height: 100vh;
+  background-image: url(sky.jpg);
+}
+    }
+
+    .clearfix:before,.clearfix:after {
+        content: " ";
+        display: table;
+      }
+      .clearfix:after {
+        clear: both;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <div class="main-wrapper clearfix">
+      <div class="quiz-wrapper">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
+
+      <div class="image-wrapper">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
+    </div>
+
+
+  </body>
+</html>
