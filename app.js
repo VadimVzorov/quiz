@@ -87,10 +87,13 @@ var state = {
       a3: "There is no such planet"
     }
   ],
-  answers: ['a0', 'a1', 'a2', 'a3', 'a0', 'a1', 'a2', 'a3', 'a0', 'a2'],
+  answers: ['0', '1', '2', '3', '0', '1', '2', '3', '0', '2'],
   progress: {
     now: 0
-  }
+  },
+  userAns: [],
+  userScore: 0,
+  ansHTML: []
 };
 
 //MODIFY STATE
@@ -99,6 +102,32 @@ function changeQuestion() {
   state.progress.now++;
 };
 
+function getUserAns(target) {
+  var userAns = $(target).val();
+  state.userAns.push(userAns);
+};
+
+function countScore() {
+  for(i = 0; i < state.items.length; i++){
+    if(state.userAns[i] == state.answers[i]){
+      state.userScore++;
+    };
+  };
+};
+
+function checkProgress() {
+  return state.progress.now == state.items.length - 1;
+};
+
+function createAnsHTML() {
+  for(i = 0; i < state.items.length; i++){
+    var q = "<b>Q: </b>" + state.items[i].q;
+    var aNum = "a" + state.answers[i];
+    var a = "<b>A: </b>" + state.items[i][aNum];
+    var string = "<p>" + q + "<br>" + a + "</p>";
+    state.ansHTML.push(string);
+  };
+};
 
 //RENDER
 
@@ -118,11 +147,44 @@ function nextQuestion(target){
 function nextAnswer(){
   var progress = state.progress.now;
   for(i=0; i<4; i++){
-    var target = "#a" + i;
+    var target = "#aText" + i;
     var aVal = "a" + i;
     $(target).text(state.items[progress][aVal]);
   };
+  $('input').prop('checked', false);
 };
+
+function proceedCheck(){
+  var x = $('input:checked').prop('checked');
+  return x;
+};
+
+function showError(){
+  $("#error").removeClass("eHide");
+  setTimeout(hideError, 1000);
+};
+
+function hideError(){
+  $("#error").addClass("eHide");
+};
+
+function showResults() {
+  $("#results").removeClass("hidden");
+  $("#questionCard, #submit, #progress").addClass("hidden");
+  createAnsHTML();
+  $("#correctAns").append(state.ansHTML);
+};
+
+function insertScore() {
+  var string = state.userScore + "/10";
+  $("#score").text(string);
+};
+
+function updateProgress() {
+  var string = state.progress.now + 1 + "/10";
+  $("#progress").text(string);
+};
+
 
 //EVENT LISTENERS
 $(document).ready(function() {
@@ -133,13 +195,32 @@ $(document).ready(function() {
     var target1 = "#questionCard, #submit, #progress";
     var target2 = "#start";
     start(target1, target2);
+    updateProgress();
   });
 
-  $(parent).on('click', '#submit', function(event) {
-    var target = "#question";
-    changeQuestion();
-    nextQuestion(target);
-    nextAnswer();
+  $parent.on('click', '#submit', function(event) {
+
+    if(checkProgress()) {
+      showResults();
+      countScore();
+      insertScore();
+
+    } else {
+      if(proceedCheck()){
+        var target = "#question";
+        getUserAns('input:checked');
+        changeQuestion();
+        nextQuestion(target);
+        nextAnswer();
+        updateProgress();
+      } else {
+        showError();
+      };
+    };
+
   });
 
+  // $parent.on('change', 'input[type=radio]', function(event){
+  //   getUserAns('input');
+  // });
 });

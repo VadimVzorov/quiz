@@ -19,12 +19,44 @@
         Question Text: Hello World this is my question
       </div>
 
+      <div class="error eHide" id="error">Please select your answer first</div>
+
       <div class="answerList" id="q1">
         <ul class="answers" id="q1">
           <li class="answBox">
 
+            <input type="radio" name="answers" value="0" id="a0">
+            <label for="a0" id="aText0">Answer</label>
+
+          </li>
+
+          <li class="answBox">
+
+            <input type="radio" name="answers" value="1" id="a1">
+            <label for="a1" id="aText1">Answer</label>
+
+          </li>
+
+          <li class="answBox">
+
+            <input type="radio" name="answers" value="2" id="a2">
+            <label for="a2" id="aText2">Answer</label>
+
+          </li>
+
+          <li class="answBox">
+
+            <input type="radio" name="answers" value="3" id="a3">
+            <label for="a3" id="aText3">Answer</label>
+
+          </li>
+
+
+
+
+            <!--
             <label for="answers" id="a0">
-              <input type="radio" name="answers" value="1" class="answInp"/>
+              <input type="radio" name="answers" value="0" class="answInp"/>
               Answer
             </label>
           </li>
@@ -32,24 +64,24 @@
           <li class="answBox">
 
             <label for="answers" id="a1">
-              <input type="radio" name="answers" value="2" class="answInp"/>
+              <input type="radio" name="answers" value="1" class="answInp"/>
               Answer
             </label>
           </li>
 
           <li class="answBox">
             <label for="answers" id="a2">
+              <input type="radio" name="answers" value="2" class="answInp"/>
               Answer
-              <input type="radio" name="answers" value="3" class="answInp"/>
             </label>
           </li>
 
           <li class="answBox">
             <label for="answers" id="a3">
+              <input type="radio" name="answers" value="3" class="answInp"/>
               Answer
-              <input type="radio" name="answers" value="4" class="answInp"/>
             </label>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
@@ -59,8 +91,15 @@
       <button type="button" name="submit" class="submitButton">Submit</button>
     </div>
 
-    <div class="progress hidden" id="progress">
-      <span id="progressVal">1 out of 10</span>
+    <div class="progress hidden" id="progress">1 out of 10</div>
+
+    <div class="results hidden" id="results">
+
+      <h2 class="rHead">Your score:</h2>
+      <div class="score" id="score"></div>
+      <h3 class="ansHead">Answers:</h3>
+      <div class="correctAns" id="correctAns"></div>
+
     </div>
 
   </div>

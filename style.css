@@ -40,10 +40,6 @@ body {
   padding: 0px;
 }
 
-  /*.answInp {
-    visibility: hidden;
-  }*/
-
 .answBox {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -53,11 +49,11 @@ body {
   background-color: #f2e6cd;
 }
 
-label:checked {
+/*label:checked {
   background: #c4b24c;
   margin-top: 10px;
   margin-bottom: 10px;
-}
+}*/
 
 .submitButton {
   border: 0;
@@ -71,6 +67,53 @@ label:checked {
   font-weight: 700;
 }
 
+.submitButton:hover {
+  background-color: black;
+  color: white;
+}
+
 .hidden {
   display: none;
 }
+
+input[type=radio]{
+  visibility: hidden;
+  position: absolute;
+  left: -9999em;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+input[type=radio]:checked + label {
+  background: #c4b24c;
+}
+
+.error {
+  position: absolute;
+  width: 400px;
+  height: 200px;
+  background: red;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  left: 25%;
+  top: 50%;
+  padding-left: 10px;
+  padding-top: 40px;
+}
+
+.eHide {
+  display: none;
+}
+/*
+input[ty] {
+    position: absolute;
+    left: -9999em;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    }*/
