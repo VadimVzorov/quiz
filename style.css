@@ -195,6 +195,18 @@ input[type=radio]:checked + label {
   padding-top: 3px;
 }
 
+.yourScore {
+  font-family: 'Roboto', sans-serif;
+  list-style-type: none;
+  font-size: 20px;
+  color: white;
+  width: 120px;
+  height: 30px;
+  padding-left: 10px;
+  background-color: black;
+  padding-top: 3px;
+}
+
 .correctAns {
   font-family: 'Roboto', sans-serif;
   margin-left: 40px;
